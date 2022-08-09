@@ -1,0 +1,42 @@
+@use './partials/colors' as *;
+@use './partials/mixins' as *;
+@use './partials/typography' as *;
+
+html {
+    font-size: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    background-color: $color-background;
+    height: 100vh;
+    font-family: "Open Sans";
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.7s;
+
+    &:hover {
+        color: $color-font-primary;
+        transition: color 0.7s;
+    }
+}
+
+button {
+    cursor: pointer;
+    transition: color 0.7s;
+
+    &:hover {
+        color: $color-font-primary;
+        transition: color 0.7s;
+    }
+}
