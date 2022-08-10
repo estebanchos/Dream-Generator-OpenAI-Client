@@ -55,6 +55,7 @@ header {
         font-size: 1.5rem;
         margin-bottom: 0;
         text-align: center;
+        font-weight: bold;
 
         @include tablet {
             font-size: 2rem;
@@ -82,12 +83,12 @@ header {
         justify-content: center;
         align-items: center;
         height: 2.5rem;
-        transition: all 0.2s linear 0s;
         width: 100%;
         border: 0;
 
         &:hover {
             border: 3px solid #5bacc3;
+            transition: border 0.3s linear;
         }
 
         @include tablet {
@@ -146,11 +147,11 @@ header {
         justify-content: center;
         align-items: center;
         height: 2.5rem;
-        transition: all 0.2s linear 0s;
         border: 0;
 
         &:hover {
             border: 3px solid #5bacc3;
+            transition: border 0.3s linear;
         }
 
         @include tablet {
@@ -315,5 +316,11 @@ footer {
         height: 59.6px;
         margin-right: 1rem;
 
+    }
+}
+
+@keyframes linearGradientMove {
+    100% {
+        background-position: 4px 0, -4px 100%, 0 -4px, 100% 4px;
     }
 }
