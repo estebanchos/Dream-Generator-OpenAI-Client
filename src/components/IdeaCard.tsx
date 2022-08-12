@@ -22,7 +22,7 @@ const IdeaCard = ({ idea, keyPosition }: Props) => {
                 <div className="item__content">
                     {validIdeas.map((idea, index) => {
                         return (
-                            <p>{`${idea}`}</p>
+                            <p key={index}>{`${idea}`}</p>
                         )
                     })}
                 </div>

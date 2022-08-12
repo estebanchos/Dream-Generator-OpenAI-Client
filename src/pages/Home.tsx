@@ -7,55 +7,53 @@ import charlieIcon from '../assets/icons/charlie-icon.png';
 import axios from 'axios';
 import { INewIdea } from '../Interfaces';
 import IdeaCard from '../components/IdeaCard';
+import { useEffect } from 'react';
 
-const apiUrl: string = "https://api.openai.com/v1/engines/text-curie-001/completions";
+const serverUrl: string = "http://localhost:8080/generate";
 
 const Home: FC = () => {
-    
+
     const [prompt, setPrompt] = useState<string>("")
     const [newIdeas, setNewIdeas] = useState<INewIdea[]>([])
 
+    // Initial load of saved items, if any
+    useEffect(() => {
+        const saved = localStorage.getItem('ecomIdeas')
+        if (saved) {
+            let parsedSaved: INewIdea[] = JSON.parse(saved)
+            setNewIdeas(parsedSaved)
+            return
+        }
+    }, [])
+
     const handleChange = (e: ChangeEvent<HTMLInputElement>): void => setPrompt(e.target.value)
 
-    // const key = process.env.REACT_APP_API_KEY
-    // console.log(key)
-    const key: string = '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'
-
     const generateIdeas = (): void => {
-        let apiPrompt = `Brainstorm some ideas combining ecommerce and ${prompt}`
-        let authorization = `Bearer ${key}`
         let apiResponse: string
-        let headersApi = {
-            "Content-Type": "application/json",
-            "Authorization": authorization
-        };
-        let dataApi = JSON.stringify({
-            "prompt": apiPrompt,
-            "max_tokens": 50,
-            "temperature": 0.6,
-            "top_p": 1,
-            "frequency_penalty": 1,
-            "presence_penalty": 1
+        axios.post(serverUrl, {
+            prompt: prompt
         })
-        axios({
-            method: "post",
-            url: apiUrl,
-            headers: headersApi,
-            data: dataApi
-        })
-            .then(response => {
-                apiResponse = response.data.choices[0].text;
+            .then(res => {
+                apiResponse = res.data
                 const newIdea = {
                     prompt: prompt,
                     response: apiResponse
                 }
-                setNewIdeas([...newIdeas, newIdea])
+                saveIdeas(newIdea)
+                setNewIdeas([newIdea, ...newIdeas])
                 setPrompt('')
             })
             .catch(error => {
                 console.log(`error sending request to API: ${error}`)
             })
     }
+
+    const clearIdeas = (): void => {
+        localStorage.clear()
+        setNewIdeas([])
+    }
+
+    const saveIdeas = (newIdea: INewIdea): void => localStorage.setItem('ecomIdeas', JSON.stringify([newIdea, ...newIdeas]))
 
     return (
         <>
@@ -67,9 +65,9 @@ const Home: FC = () => {
             </header >
             <main>
                 <section className="app">
-                    <h2 className="app__title">Your next eCommerce Store starts here</h2>
+                    <h2 className="app__title">Your next eCommerce Idea starts here</h2>
                     <p className="app__description">Do you know what to sell online? Need some help?</p>
-                    <p className="app__description">Dream generator will brainstorm for you!</p>
+                    <p className="app__description">Dream Generator will brainstorm for you!</p>
                     <section className="app__input">
                         <section className="form">
                             <div className="form__container">
@@ -85,22 +83,32 @@ const Home: FC = () => {
                                 />
                             </div>
                             <div className="form__container">
-                                <button className="form__button" onClick={generateIdeas}>Generate ideas</button>
+                                <button
+                                    className="form__button"
+                                    onClick={generateIdeas}
+                                    onKeyPress={(e) => e.key === 'Enter' && generateIdeas()}
+                                >
+                                    Generate ideas
+                                </button>
                             </div>
                         </section>
                     </section>
-                    <button className="app__button">Clear results</button>
-                    <section className="app__gallery gallery">
-                        <ul className="gallery__list">
-                            {newIdeas.map((idea: INewIdea, index: number) => {
-                                return (
-                                    <li className='gallery__item' key={index}>
-                                        <IdeaCard keyPosition={index} idea={idea} />
-                                    </li>
-                                )
-                            })}
-                        </ul>
-                    </section>
+                    <button className="app__button" onClick={clearIdeas}>
+                        Clear results
+                    </button>
+                    {newIdeas.length > 0
+                        ? <section className="app__gallery gallery">
+                            <ul className="gallery__list">
+                                {newIdeas.map((idea: INewIdea, index: number) => {
+                                    return (
+                                        <li className='gallery__item' key={index}>
+                                            <IdeaCard keyPosition={index} idea={idea} />
+                                        </li>
+                                    )
+                                })}
+                            </ul>
+                        </section>
+                        : ''}
                 </section>
             </main>
             <footer>
