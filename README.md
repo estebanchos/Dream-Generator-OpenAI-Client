@@ -38,6 +38,7 @@ Dream Generator is a simple tool that allows you to brainstorm ecommerce ideas a
 ### Back-end
 Create a .env file and include:
 * OPENAI_API_KEY: key provided by OpenAI
+
 You can create an account and get a key at [OpenAI](https://beta.openai.com "OpenAI")
 
 ## Installation - Client
