@@ -1,46 +1,78 @@
-# Getting Started with Create React App
+# Dream Generator with OpenAI
+Dream Generator is a web app that uses OpenAI's text completion engine to generate ecommerce store ideas based on a prompt.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+Back-end repo: [Dream Generator server](https://github.com/estebanchos/Dream-Generator-OpenAI-Server "Dream-Generator server")
 
-In the project directory, you can run:
+## Problem Space
+People have ideas of what they would like to sell online, for example sustainably grown coffee, but they might not know exactly how to do it. I wanted to leverage OpenAI's text completion engine to generate simple ecommerce ideas, for example "create a subscription service to receive sustainably grown coffee" or "start a website that connects local coffee producers with customers".
+Dream Generator is a simple tool that allows you to brainstorm ecommerce ideas and you can save ideas on your browser.
 
-### `npm start`
+## Features
+* Generating ecommerce ideas based on what you want to sell
+* Saving ideas on the browser
+* Deleting ideas from the browser
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Teck Stack
+### Front-end
+* React (TypeScript)
+* Sass
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Back-end
+* Node.js
+* Express
 
-### `npm test`
+### Third Party APIs
+* OpenAI
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Dependencies
+### Front-end
+* Axios
+* Sass
+### Back-end
+* cors
+* dotenv
+* nodemon
 
-### `npm run build`
+## Environment dependency
+### Back-end
+Create a .env file and include:
+* OPENAI_API_KEY: key provided by OpenAI
+You can create an account and get a key at [OpenAI](https://beta.openai.com "OpenAI")
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Installation - Client
+### Clone
+Clone repo locally:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+`git clone git@github.com:estebanchos/Dream-Generator-OpenAI-Client.git`
+### Setup
+* Open the project folder and install dependencies.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`npm i`
+### Run
+* Run react app locally.
 
-### `npm run eject`
+`npm start`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Installation - Server
+### Clone
+Clone repo locally:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`git clone git@github.com:estebanchos/Dream-Generator-OpenAI-Server.git`
+### Setup
+* Open the project folder and install dependencies.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+`npm i`
+### Run
+* Run server locally using nodemon.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+`npm run dev`
 
-## Learn More
+## Lessons Learned
+* As a Junior Dev I enjoyed learning how to work with a third party API.
+* Managing third party API keys must always be done on the server side. API keys on React .env files are published when the app is compiled.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Contact Info
+[Email](mailto:charlie@carlosocampo.ca "Email")
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+[LinkedIn](https://www.linkedin.com/in/carlosocampo/ "LinkedIn")
