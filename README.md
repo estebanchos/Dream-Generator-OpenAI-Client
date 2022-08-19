@@ -4,19 +4,23 @@ Dream Generator is a web app that uses OpenAI's text completion engine to genera
 
 Back-end repo: [Dream Generator server](https://github.com/estebanchos/Dream-Generator-OpenAI-Server "Dream-Generator server")
 
-## Problem Space
-People have ideas of what they would like to sell online, for example sustainably grown coffee, but they might not know exactly how to do it. I wanted to leverage OpenAI's text completion engine to generate simple ecommerce ideas, for example "create a subscription service to receive sustainably grown coffee" or "start a website that connects local coffee producers with customers".
-Dream Generator is a simple tool that allows you to brainstorm ecommerce ideas and you can save ideas on your browser.
+## About The Project 
+* I wanted to work with OpenAI's API and explore their AI's brainstorming capabilities to generate ecommerce ideas.
+* **The Idea:** People may have an idea of what to sell online but they might not know exactly how to do it. 
+* **The Application:** Users need to provide a prompt, for example "sustainably grown coffee", then OpenAI's text completion engine would generate some ecommerce ideas, for example "create a subscription service to receive sustainably grown coffee" or "start a website that connects local coffee producers with customers".
+* Dream Generator is a simple tool that allows you to brainstorm ecommerce ideas and you can save ideas on your browser.
 
 ## Features
 * Generating ecommerce ideas based on what you want to sell
 * Saving ideas on the browser
 * Deleting ideas from the browser
 
-## Teck Stack
+## Built With
 ### Front-end
 * React (TypeScript)
+* JavaScript ES6
 * Sass
+* CSS3
 
 ### Back-end
 * Node.js
@@ -24,15 +28,6 @@ Dream Generator is a simple tool that allows you to brainstorm ecommerce ideas a
 
 ### Third Party APIs
 * OpenAI
-
-## Dependencies
-### Front-end
-* Axios
-* Sass
-### Back-end
-* cors
-* dotenv
-* nodemon
 
 ## Environment dependency
 ### Back-end
