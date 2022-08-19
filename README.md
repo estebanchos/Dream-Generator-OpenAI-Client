@@ -4,6 +4,8 @@ Dream Generator is a web app that uses OpenAI's text completion engine to genera
 
 Back-end repo: [Dream Generator server](https://github.com/estebanchos/Dream-Generator-OpenAI-Server "Dream-Generator server")
 
+![Demo screenshot](/app-screenshot.png)
+
 ## About The Project 
 * I wanted to work with OpenAI's API and explore their AI's brainstorming capabilities to generate ecommerce ideas.
 * **The Idea:** People may have an idea of what to sell online but they might not know exactly how to do it. 
